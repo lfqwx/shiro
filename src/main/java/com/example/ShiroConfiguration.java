@@ -15,6 +15,9 @@ import java.util.LinkedHashMap;
 /**
  * @author L.F.Q
  * @date 2019/5/20 9:01
+ *
+ * Shiro核心配置类
+ * credentialMatcher->authRealm->securityManager->shiroFilter
  */
 @Configuration
 public class ShiroConfiguration {
@@ -60,7 +63,11 @@ public class ShiroConfiguration {
         return new CredentialMatcher();
     }
 
-    /*将shiro于spring结合的两个bean*/
+    /**
+     * 将shiro与spring结合的两个bean
+     * @param securityManager
+     * @return
+     */
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("securityManager") SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
